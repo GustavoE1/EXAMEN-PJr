@@ -133,7 +133,8 @@ static/
 - No se permite registrar productos con stock inicial negativo.
 - No se permite vender una cantidad superior al stock disponible.
 - Todos los movimientos de inventario quedan registrados en la seccion Kardex.
-- IMPORTANTE: Las tablas de la base de datos se crean automáticamente al iniciar la aplicación por primera vez.
+- IMPORTANTE: Las tablas de la base de datos se crean automáticamente al iniciar la aplicación
+  por primera vez, de igual manera se esta dejando un script de postgres en el entregable.
 - Opcionalmente, para insertar datos de ejemplo ejecutar:
 
   python app/db/seed.py
