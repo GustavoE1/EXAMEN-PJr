@@ -132,7 +132,7 @@ static/
 - El stock solo puede modificarse mediante el módulo de Inventario y las Ventas.
 - No se permite registrar productos con stock inicial negativo.
 - No se permite vender una cantidad superior al stock disponible.
-- Todos los movimientos de inventario quedan registrados en el Kardex.
+- Todos los movimientos de inventario quedan registrados en la seccion Kardex.
 - Las tablas de la base de datos se crean automáticamente al iniciar la aplicación por primera vez.
 
 ---
