@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-3">Inventario</h3>
+
+<div class="card mb-4">
+    <div class="card-header">Registrar ingreso de stock</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Producto</label>
+                <select id="producto_id" class="form-select"></select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label>Cantidad</label>
+                <input type="number" id="cantidad" class="form-control">
+            </div>
+
+            <div class="col-md-3 mb-3 d-flex align-items-end">
+                <button class="btn btn-success w-100" onclick="registrarIngreso()">
+                    Registrar ingreso
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert d-none" id="mensaje"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/inventario.js"></script>
+{% endblock %}

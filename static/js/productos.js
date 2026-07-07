@@ -128,8 +128,7 @@ async function actualizarProducto() {
         marca: document.getElementById("edit_marca").value,
         tipo: document.getElementById("edit_tipo").value,
         presentacion: document.getElementById("edit_presentacion").value,
-        precio_venta: parseFloat(document.getElementById("edit_precio_venta").value),
-        stock_actual: parseInt(document.getElementById("edit_stock_actual").value)
+        precio_venta: parseFloat(document.getElementById("edit_precio_venta").value)
     };
 
     await fetch(`${API_URL}/${id}`, {

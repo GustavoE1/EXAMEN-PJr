@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-3">Kardex</h3>
+
+<div class="card mb-4">
+    <div class="card-header">Filtro</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <label>Producto</label>
+                <select id="producto_id" class="form-select">
+                    <option value="">Todos los productos</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3 d-flex align-items-end">
+                <button class="btn btn-primary w-100" onclick="filtrarKardex()">
+                    Filtrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Movimientos</div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Producto ID</th>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Stock anterior</th>
+                    <th>Stock nuevo</th>
+                    <th>Referencia</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-kardex"></tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/kardex.js"></script>
+{% endblock %}
