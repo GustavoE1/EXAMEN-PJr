@@ -137,7 +137,7 @@ static/
   por primera vez, de igual manera se esta dejando un script de postgres en el entregable.
 - Opcionalmente, para insertar datos de ejemplo ejecutar:
 
-  python app/db/seed.py
+  python -m app.db.seed
 
 ---
 
