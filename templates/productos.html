@@ -35,15 +35,15 @@
 
             <div class="col-md-4 mb-3">
                 <label>Precio de venta</label>
-                <input type="number" id="precio_venta" class="form-control" step="0.01">
+                <input type="number" id="precio_venta" class="form-control" step="0.01" min="0">
             </div>
 
             <div class="col-md-4 mb-3">
                 <label>Stock inicial</label>
-                <input type="number" id="stock_actual" class="form-control">
+                <input type="number" id="stock_actual" class="form-control" min="0">
             </div>
         </div>
-
+        <div class="alert d-none" id="mensaje-producto"></div>
         <button class="btn btn-success" onclick="guardarProducto()">Guardar</button>
         <button class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
     </div>

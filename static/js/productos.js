@@ -26,10 +26,10 @@ async function cargarProductos() {
                 <td>${producto.stock_actual}</td>
                 <td>
                     <button
-                    class="btn btn-warning btn-sm"
-                    onclick="editarProducto(${producto.id})">
-                    Editar
-                </button>
+                        class="btn btn-warning btn-sm"
+                        onclick="editarProducto(${producto.id})">
+                        Editar
+                    </button>
                 </td>
             </tr>
         `;
@@ -53,9 +53,11 @@ async function guardarProducto() {
 
     };
 
+    let response;
+
     if (id === "") {
 
-        await fetch(API_URL, {
+        response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -65,7 +67,7 @@ async function guardarProducto() {
 
     } else {
 
-        await fetch(`${API_URL}/${id}`, {
+        response = await fetch(`${API_URL}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -75,12 +77,24 @@ async function guardarProducto() {
 
     }
 
-    limpiarFormulario();
+    const data = await response.json();
 
+    if (!response.ok) {
+        mostrarMensajeProducto(data.detail || "Ocurrió un error.", "danger");
+        return;
+    }
+
+    mostrarMensajeProducto(
+        id === ""
+            ? "Producto registrado correctamente."
+            : "Producto actualizado correctamente.",
+        "success"
+    );
+
+    limpiarFormulario();
     cargarProductos();
 
 }
-
 
 function limpiarFormulario() {
 
@@ -94,12 +108,12 @@ function limpiarFormulario() {
 
 }
 
-
 async function editarProducto(id) {
+
     const response = await fetch(`${API_URL}/${id}`);
 
     if (!response.ok) {
-        alert("No se pudo obtener el producto");
+        mostrarMensajeProducto("No se pudo obtener el producto.", "danger");
         return;
     }
 
@@ -118,9 +132,11 @@ async function editarProducto(id) {
     );
 
     modal.show();
+
 }
 
 async function actualizarProducto() {
+
     const id = document.getElementById("edit_producto_id").value;
 
     const producto = {
@@ -131,7 +147,7 @@ async function actualizarProducto() {
         precio_venta: parseFloat(document.getElementById("edit_precio_venta").value)
     };
 
-    await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -139,9 +155,28 @@ async function actualizarProducto() {
         body: JSON.stringify(producto)
     });
 
+    const data = await response.json();
+
+    if (!response.ok) {
+        mostrarMensajeProducto(data.detail || "Error al actualizar producto.", "danger");
+        return;
+    }
+
     bootstrap.Modal.getInstance(
         document.getElementById("modalEditarProducto")
     ).hide();
 
+    mostrarMensajeProducto("Producto actualizado correctamente.", "success");
+
     cargarProductos();
+
+}
+
+function mostrarMensajeProducto(texto, tipo) {
+
+    const mensaje = document.getElementById("mensaje-producto");
+
+    mensaje.className = `alert alert-${tipo}`;
+    mensaje.textContent = texto;
+
 }

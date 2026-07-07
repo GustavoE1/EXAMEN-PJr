@@ -33,7 +33,10 @@ def crear_producto(
     producto_data: ProductoCreate,
     session: Session = Depends(get_session)
 ):
-    return producto_service.crear_producto(session, producto_data)
+    try:
+        return producto_service.crear_producto(session, producto_data)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.put("/{producto_id}", response_model=ProductoRead)

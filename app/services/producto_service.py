@@ -9,6 +9,12 @@ def crear_producto(
     session: Session,
     producto_data: ProductoCreate
 ) -> Producto:
+    
+    if producto_data.stock_actual < 0:
+        raise ValueError("El stock inicial no puede ser negativo")
+
+    if producto_data.precio_venta < 0:
+        raise ValueError("El precio de venta no puede ser negativo")
     producto = Producto.model_validate(producto_data)
 
     session.add(producto)
