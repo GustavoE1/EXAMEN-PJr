@@ -1,5 +1,5 @@
 const PRODUCTOS_API = "/api/productos";
-const KARDEX_API = "/api/kardex";
+const KARDEX_API = "/api/kardex/";
 
 document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
@@ -34,7 +34,7 @@ async function cargarKardex(url = KARDEX_API) {
         tbody.innerHTML += `
             <tr>
                 <td>${fecha}</td>
-                <td>${mov.producto_id}</td>
+                <td>${mov.producto}</td>
                 <td>${mov.tipo_movimiento}</td>
                 <td>${mov.cantidad}</td>
                 <td>${mov.stock_anterior}</td>
@@ -53,5 +53,5 @@ function filtrarKardex() {
         return;
     }
 
-    cargarKardex(`${KARDEX_API}/producto/${productoId}`);
+    cargarKardex(`/api/kardex/producto/${productoId}`);
 }
