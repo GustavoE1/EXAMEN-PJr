@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 ## Configuración
 
-Crear un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+Crear un archivo `.env` en la raíz del proyecto (**EXAMEN-PJR/**) con el siguiente contenido:
 
 ```env
 POSTGRES_SERVER=localhost
@@ -133,7 +133,10 @@ static/
 - No se permite registrar productos con stock inicial negativo.
 - No se permite vender una cantidad superior al stock disponible.
 - Todos los movimientos de inventario quedan registrados en la seccion Kardex.
-- Las tablas de la base de datos se crean automáticamente al iniciar la aplicación por primera vez.
+- IMPORTANTE: Las tablas de la base de datos se crean automáticamente al iniciar la aplicación por primera vez.
+- Opcionalmente, para insertar datos de ejemplo ejecutar:
+
+  python app/db/seed.py
 
 ---
 
