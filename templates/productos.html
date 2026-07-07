@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Productos</h3>
+    <button class="btn btn-primary" onclick="limpiarFormulario()">Nuevo producto</button>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">Formulario de producto</div>
+    <div class="card-body">
+        <input type="hidden" id="producto_id">
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Nombre</label>
+                <input type="text" id="nombre" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Marca</label>
+                <input type="text" id="marca" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Tipo</label>
+                <input type="text" id="tipo" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Presentación</label>
+                <input type="text" id="presentacion" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Precio de venta</label>
+                <input type="number" id="precio_venta" class="form-control" step="0.01">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Stock inicial</label>
+                <input type="number" id="stock_actual" class="form-control">
+            </div>
+        </div>
+
+        <button class="btn btn-success" onclick="guardarProducto()">Guardar</button>
+        <button class="btn btn-secondary" onclick="limpiarFormulario()">Limpiar</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Listado de productos</div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Presentación</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos"></tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="modalEditarProducto" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="edit_producto_id">
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label>Nombre</label>
+                        <input type="text" id="edit_nombre" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Marca</label>
+                        <input type="text" id="edit_marca" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Tipo</label>
+                        <input type="text" id="edit_tipo" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Presentación</label>
+                        <input type="text" id="edit_presentacion" class="form-control">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Precio de venta</label>
+                        <input type="number" id="edit_precio_venta" class="form-control" step="0.01">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Stock</label>
+                        <input type="number" id="edit_stock_actual" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" onclick="actualizarProducto()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/productos.js"></script>
+{% endblock %}
