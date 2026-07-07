@@ -1,4 +1,4 @@
-# Sistema Kardex de Vinos
+# Sistema de venta de Vinos
 
 Sistema web desarrollado con FastAPI para la gestión de productos, inventario, ventas y registro de movimientos tipo Kardex.
 
